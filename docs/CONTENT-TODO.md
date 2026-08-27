@@ -33,9 +33,8 @@ Suggested sizes below (all can be larger; keep the aspect ratio).
 - [ ] **SETU AI Tool Evaluation Checklist** (Section 4, "Evaluating AI Tools and
   Emerging Technologies") — currently rendered as a dashed `.placeholder` block.
   Replace with a real download link once the checklist exists.
-- [ ] **SETU Assessment Redesign Framework** link (Section 2, "Rethinking Practice" —
-  the Assessment redesign case study) — currently an inline `[SETU to confirm: link]`
-  placeholder note. Add the real URL once available.
+- [x] **SETU Assessment Redesign Framework** link (Section 2, "Rethinking Practice" —
+  the Assessment redesign case study) — resolved, links to https://arf.genain3.ie.
 
 ## 3. Completion / certificate
 
@@ -43,21 +42,11 @@ Suggested sizes below (all can be larger; keep the aspect ratio).
   AI-Enabled University". If you want a signatory line (e.g. a name/title) or a
   QR/verify note, say so and it can be added. The learner types their own name; the
   LMS also records completion via SCORM.
-- [ ] **Done-screen "Where next"** — since this is the third and final course, there's
-  no Course 4 to point to. Currently framed as programme completion, with an optional
-  backward reference to Courses 1 & 2 and/or an ongoing AI community of practice /
-  CPD channel — `[SETU to confirm: URL(s), if any]` in `index.html`'s final two
-  sections.
 
-## 4. Attribution
+## 4. Attribution (done)
 
-- [ ] The `.credits` line on the Done screen currently reads "Developed by the Centre
-  for Academic Practice, based on a course development script for AI Fluency. [SETU
-  to confirm: script author credit line.]" — Course 2's equivalent line names its
-  script author (Dr Hazel Farrell); confirm whether the same person authored the
-  Fluency script, or update the name. Also confirm the image-credit line once real
-  images are supplied (Course 2 credits ChatGPT-generated images — confirm this
-  course's actual source).
+- [x] The `.credits` line on the Done screen names the script author (Dr Hazel
+  Farrell) and credits ChatGPT-generated images, matching Course 2's convention.
 
 ## 5. Branding (done — confirm)
 

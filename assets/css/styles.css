@@ -399,6 +399,7 @@ hr.rule { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
 .spectrum__legend span:nth-child(1) { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 45%, var(--border)); background: var(--ok-tint); }
 .spectrum__legend span:nth-child(2) { color: var(--suir-blue); border-color: color-mix(in srgb, var(--suir-blue) 45%, var(--border)); background: color-mix(in srgb, var(--suir-blue) 14%, var(--surface)); }
 .spectrum__legend span:nth-child(3) { color: var(--heather); border-color: color-mix(in srgb, var(--heather) 45%, var(--border)); background: color-mix(in srgb, var(--heather) 14%, var(--surface)); }
+.spectrum__legend span:nth-child(4) { color: var(--grass-green); border-color: color-mix(in srgb, var(--grass-green) 45%, var(--border)); background: color-mix(in srgb, var(--grass-green) 14%, var(--surface)); }
 .srow { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; margin: 8px 0; }
 .srow__task { font-size: 14.5px; font-weight: 600; margin-bottom: 8px; }
 .srow__opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
