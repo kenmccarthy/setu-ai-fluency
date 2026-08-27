@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Fluency — Shaping Practice in an AI-Enabled University | SETU</title>
+  <meta name="description" content="Course 3 of the SETU GenAI programme. A self-paced course on critically evaluating, adapting and shaping practice in an AI-enabled environment." />
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- ===================== ICON SPRITE (line icons) ===================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+    <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-bar-chart" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v17"/><path d="M7 21h10"/><path d="M3.5 8h17"/><path d="M3.5 8l-2 5a2.3 2.3 0 0 0 4 0z"/><path d="M20.5 8l-2 5a2.3 2.3 0 0 0 4 0z"/></symbol>
+    <symbol id="i-alert-triangle" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+    <symbol id="i-alert-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></symbol>
+    <symbol id="i-check-square" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== TOP BAR ===================== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand-lockup">
+        <img class="brand-logo brand-logo--light" src="assets/img/setu-logo.png" alt="South East Technological University" />
+        <img class="brand-logo brand-logo--dark"  src="assets/img/setu-logo-white.png" alt="South East Technological University" />
+        <span class="brand-divider" aria-hidden="true"></span>
+        <div class="brand-text">
+          <b>AI Fluency</b>
+          <span>Course 3 · GenAI Programme</span>
+        </div>
+      </div>
+      <div class="topbar__spacer"></div>
+      <div class="progress">
+        <span class="progress__label-long">Progress</span>
+        <div class="progress__track" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress__fill" id="progressFill"></div>
+        </div>
+        <span id="progressPct">0%</span>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="toc">☰ Contents</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- ===================== TABLE OF CONTENTS ===================== -->
+    <div class="toc-backdrop" id="tocBackdrop"></div>
+    <nav class="toc" id="toc" aria-label="Course contents">
+      <h2>Contents</h2>
+      <ol id="tocList"><!-- populated by JS --></ol>
+    </nav>
+
+    <!-- ===================== CONTENT ===================== -->
+    <main class="content" id="main">
+
+      <!-- ---------- 0. COURSE INTRODUCTION / COVER ---------- -->
+      <section class="section is-active" data-title="Introduction" data-nav="Introduction">
+        <div class="cover__hero">
+          <img class="cover__logo" src="assets/img/setu-logo-white.png" alt="South East Technological University" />
+          <span class="eyebrow"><span class="dot"></span> GenAI Programme · Course 3 of 3</span>
+          <h1>AI Fluency</h1>
+          <p>Shaping practice in an AI-enabled university.</p>
+        </div>
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> Course Introduction · From Competency to Fluency</span>
+          <h1>Welcome to AI Fluency</h1>
+
+          <p class="lede">In AI Literacy, we developed a shared understanding of Artificial Intelligence: what it is, how it works, and the opportunities, limitations and responsibilities associated with its use. In AI Competency, we moved from understanding to application — choosing appropriate tasks, providing context, collaborating with AI, critically evaluating outputs and retaining human responsibility.</p>
+          <p><strong>AI Fluency takes us somewhere different.</strong></p>
+          <p>This isn't an advanced prompting course. We're not going to teach you how to use every new AI tool — those tools will change. Instead, we're going to consider what it means to work, teach, research, and lead effectively in an environment where AI is increasingly embedded in everyday life.</p>
+          <p>AI fluency means being able to critically evaluate emerging technologies, adapt your practice, make informed decisions, and contribute to conversations about how AI should, and should not, be used.</p>
+
+          <figure class="figure figure--banner">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>Wide welcome/hero banner for AI Fluency — people from different roles across the university in conversation</small></div>
+          </figure>
+
+          <h2>More difficult questions</h2>
+          <p>It also requires us to ask more difficult questions. Not simply:</p>
+          <div class="callout" style="border-left-color:var(--danger)">
+            <p class="callout__title">The easy question</p>
+            <p>What can AI do?</p>
+          </div>
+          <p>But:</p>
+          <ul>
+            <li>What should AI do?</li>
+            <li>What value does it create?</li>
+            <li>What are the wider consequences of using it?</li>
+            <li>What should remain human?</li>
+            <li>What might we need to do differently?</li>
+            <li>And perhaps most importantly: <strong>who gets to decide?</strong></li>
+          </ul>
+
+          <p>Throughout this course, there won't always be a single correct answer. Responsible AI involves navigating competing priorities and sometimes difficult trade-offs.</p>
+          <p>Innovation matters. So do privacy, accessibility, equity, sustainability, academic integrity, human wellbeing, and professional responsibility. AI fluency is the ability to navigate those tensions thoughtfully rather than simply accepting or rejecting technology.</p>
+
+          <div class="activity" data-activity="fluency-definition">
+            <div class="activity__head"><span class="activity__badge">Try it</span><strong>What does fluency mean to you?</strong></div>
+            <p style="font-size:15px">Before we go further, which of these best describes what it means to be AI fluent?</p>
+            <ul>
+              <li>Knowing how to use advanced AI tools.</li>
+              <li>Being able to write sophisticated prompts.</li>
+              <li>Understanding enough about AI to critically evaluate and adapt your practice.</li>
+              <li>Using AI frequently.</li>
+            </ul>
+            <div class="btn-row"><button class="btn btn--accent" data-reveal-simple="fluency-def-reveal">Reveal the working definition</button></div>
+            <div class="callout callout--key" id="fluency-def-reveal" hidden>
+              <p class="callout__title">AI fluency, defined</p>
+              <p><strong>AI fluency is the ability to critically, confidently and responsibly navigate, evaluate and shape practice in an AI-enabled environment.</strong> Only one of the four statements above really captures that — the other three describe familiarity with today's tools, not the judgement that carries you into tomorrow's.</p>
+            </div>
+          </div>
+
+          <h2>Interactive activity: Where are you now?</h2>
+          <p style="font-size:15px">Rate your confidence for each statement below from 1 (not confident) to 5 (very confident). We'll come back to this at the end of the course, so you can see what's changed.</p>
+          <div class="rating" data-rating="start">
+            <div class="rating__row" data-statement="evaluate-systems">
+              <div class="rating__label">I can critically evaluate an AI system or tool, not just the outputs it produces.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__row" data-statement="automate-or-redesign">
+              <div class="rating__label">I can judge whether a process should be automated, augmented, redesigned, or kept human-led.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__row" data-statement="human-central">
+              <div class="rating__label">I can identify where human judgement, relationships and accountability must stay central.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__row" data-statement="equity-sustainability">
+              <div class="rating__label">I can weigh equity, sustainability and risk when deciding whether to adopt an AI tool.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__row" data-statement="contribute">
+              <div class="rating__label">I can contribute to conversations about how AI should — and shouldn't — be used at SETU.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__hint">1 = not confident · 5 = very confident. Your answers are saved on this device only.</div>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>What fluency really means</p>
+            <p>Fluency isn't about mastering today's technology. It's about developing the judgement to navigate tomorrow's.</p>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn--primary" data-goto="next">Let's begin →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 1. QUESTIONING AI ---------- -->
+      <section class="section" data-title="Questioning AI" data-nav="Questioning AI">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> Questioning AI · Don't just question the output—question the technology</span>
+          <h1>Don't just question the output—question the technology</h1>
+          <p class="lede">At competency level, we learned to critically evaluate AI-generated outputs. Fluency requires us to go further — we also need to evaluate the systems themselves.</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~7 min</span><span><svg class="icon"><use href="#i-activity"/></svg> Includes an activity</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>Behind the interface — the infrastructure and people behind an AI system</small></div>
+            <figcaption>Behind every interaction is a system, not just an answer</figcaption>
+          </figure>
+
+          <p>When a new AI tool appears, it's easy to focus on what it can do. But capability is only one part of the picture. We should also ask:</p>
+          <ul>
+            <li>Who developed it?</li>
+            <li>What problem is it designed to solve?</li>
+            <li>What data might underpin it?</li>
+            <li>How reliable is it?</li>
+            <li>What happens to the information we provide?</li>
+            <li>Can we understand how it reaches its conclusions?</li>
+            <li>Who benefits from its use?</li>
+            <li>Who might be disadvantaged?</li>
+            <li>What resources are required to operate it?</li>
+            <li>What happens when it gets something wrong?</li>
+            <li>And do we actually need it?</li>
+          </ul>
+
+          <p>AI systems are not immaterial. Behind every interaction are physical infrastructures: data centres, networks and specialised hardware. These require energy and resources, and some facilities require significant water for cooling.</p>
+          <p>These impacts vary considerably between systems, tasks, infrastructure and locations. This means that simple claims about the environmental cost of an individual AI interaction can be misleading. But it also means that environmental impact shouldn't be ignored. AI fluency requires us to consider the wider consequences of technology use alongside its immediate benefits.</p>
+          <p>It also requires us to resist both hype and fear. Neither "AI will solve everything" nor "AI will destroy everything" helps us make good decisions. We need evidence, experimentation, critical thinking, and professional judgement.</p>
+
+          <div class="activity" data-activity="edusmart">
+            <div class="activity__head"><span class="activity__badge">Scenario</span><strong>The amazing new AI tool</strong></div>
+            <div class="callout callout--info">
+              <p class="callout__title">EduSmart AI</p>
+              <p>"Transform student success with AI! EduSmart predicts which students are at risk of failing with 94% accuracy and automatically recommends interventions."</p>
+            </div>
+            <p style="font-size:15px;font-weight:600">Would you recommend SETU adopt it?</p>
+            <p style="font-size:14px;color:var(--text-mute);margin-top:-6px">Decide for yourself, then reveal each fact in turn — and see whether your answer changes.</p>
+
+            <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="edusmart-1">Reveal fact 1</button></div>
+            <div class="callout" id="edusmart-1" hidden><p>The company has not published its validation methodology.</p></div>
+
+            <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="edusmart-2">Reveal fact 2</button></div>
+            <div class="callout" id="edusmart-2" hidden><p>Historical student data was used to train the system.</p></div>
+
+            <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="edusmart-3">Reveal fact 3</button></div>
+            <div class="callout" id="edusmart-3" hidden><p>Performance differs between demographic groups.</p></div>
+
+            <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="edusmart-4">Reveal fact 4</button></div>
+            <div class="callout" id="edusmart-4" hidden><p>Staff cannot see why individual students receive particular risk scores.</p></div>
+
+            <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="edusmart-5">Reveal fact 5</button></div>
+            <div class="callout" id="edusmart-5" hidden><p>The system requires substantial processing of institutional student data.</p></div>
+
+            <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="edusmart-6">Reveal fact 6</button></div>
+            <div class="callout" id="edusmart-6" hidden><p>The vendor provides little information about the environmental footprint of its infrastructure.</p></div>
+
+            <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="edusmart-7">Reveal fact 7</button></div>
+            <div class="callout" id="edusmart-7" hidden><p>The vendor states that institutions remain responsible for decisions.</p></div>
+          </div>
+
+          <h2>Reflection</h2>
+          <p style="font-size:15px">What questions should we ask about AI before asking what it can do?</p>
+          <div class="reflect">
+            <textarea data-reflect="s1-questions" data-label="What questions should we ask about AI before asking what it can do?" placeholder="The questions I'd want answered first…"></textarea>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>Evaluate the system, not just the output</p>
+            <p>AI fluency requires critical evaluation of systems, not simply their outputs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 2. RETHINKING PRACTICE ---------- -->
+      <section class="section" data-title="Rethinking Practice" data-nav="Rethinking Practice">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> Rethinking Practice · Don't automate something just because we've always done it</span>
+          <h1>Don't automate something just because we've always done it</h1>
+          <p class="lede">One of the easiest ways to use AI is to make existing processes faster. But fluency asks a more challenging question: should we be doing the same thing faster — or should we be doing something differently?</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~7 min</span><span><svg class="icon"><use href="#i-activity"/></svg> Includes an activity</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A process being redesigned, not just sped up — sketching/whiteboard imagery</small></div>
+            <figcaption>Redesign, not just automation</figcaption>
+          </figure>
+
+          <p>Write the email faster. Summarise the report faster. Create the presentation faster. Analyse the feedback faster. Those efficiencies can be valuable.</p>
+
+          <p>Consider assessment. If an assessment can now be completed almost entirely by Generative AI, we could spend considerable effort trying to prevent students from using it. Or we could return to the fundamental question: <strong>what learning are we actually trying to assess?</strong></p>
+          <p>The same principle applies beyond teaching. If AI can automate part of an administrative process, perhaps the opportunity isn't simply to automate the existing workflow. Perhaps we should reconsider why the process exists, where friction occurs, and where human interaction provides genuine value.</p>
+          <p>There is also a sustainability dimension. Using AI to automate an inefficient process at scale may simply add another layer of technology and resource consumption to a process that needed redesigning in the first place.</p>
+
+          <div class="callout callout--key">
+            <p class="callout__title">Ask before you automate</p>
+            <p>Before asking how AI can improve a process, ask whether the process itself still serves its purpose. AI can become a catalyst for redesign rather than simply a tool for efficiency.</p>
+          </div>
+
+          <div class="spectrum" id="spectrum-rethink" data-spectrum>
+            <div class="activity__head"><span class="activity__badge">Activity</span><strong>Automate, augment, rethink or retain?</strong></div>
+            <p style="font-size:15px;margin:6px 0 4px">For each task, what's the right response? Then ask: if this approach were adopted across the university, what would the benefits and costs be — in time, quality, accessibility, workload, environmental resources and human experience?</p>
+            <div class="spectrum__legend"><span>Automate</span><span>Augment</span><span>Rethink</span><span>Keep human-led</span></div>
+            <div>
+              <div class="srow" data-note="A strong candidate for automation — but check who currently adds judgement while minuting (flagging risks, capturing nuance) before removing the human step entirely.">
+                <div class="srow__task">Producing standard meeting minutes</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Automate</button><button data-v="1">Augment</button><button data-v="2">Rethink</button><button data-v="3">Keep human-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Often data-heavy and repetitive, but the analysis and recommendations may need academic judgement — a candidate for augmenting rather than fully automating.">
+                <div class="srow__task">Annual programme reports</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Automate</button><button data-v="1">Augment</button><button data-v="2">Rethink</button><button data-v="3">Keep human-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Routine, high-volume enquiries can often be automated or augmented — but watch for the enquiry that only looks routine until you read it closely.">
+                <div class="srow__task">Responding to routine student enquiries</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Automate</button><button data-v="1">Augment</button><button data-v="2">Rethink</button><button data-v="3">Keep human-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="AI can help draft feedback faster, but the judgement about what a student needs to hear, and how, usually belongs with the person teaching them.">
+                <div class="srow__task">Assessment feedback</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Automate</button><button data-v="1">Augment</button><button data-v="2">Rethink</button><button data-v="3">Keep human-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Logistics and information delivery can be augmented; the relationships and culture-building that induction also does are harder to automate well.">
+                <div class="srow__task">Staff induction</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Automate</button><button data-v="1">Augment</button><button data-v="2">Rethink</button><button data-v="3">Keep human-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="AI is well suited to surfacing patterns at scale — the interpretation, and what to do about it, still needs human context.">
+                <div class="srow__task">Analysing student surveys</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Automate</button><button data-v="1">Augment</button><button data-v="2">Rethink</button><button data-v="3">Keep human-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+            </div>
+          </div>
+
+          <h2>Case study: Assessment redesign</h2>
+          <p style="font-size:15px">An academic discovers that students can generate convincing responses to an existing essay using AI. Consider four responses:</p>
+          <div class="callout"><p class="callout__title">A</p><p>Prohibit AI.</p></div>
+          <div class="callout"><p class="callout__title">B</p><p>Introduce AI detection.</p></div>
+          <div class="callout"><p class="callout__title">C</p><p>Retain the essay but require students to disclose AI use.</p></div>
+          <div class="callout"><p class="callout__title">D</p><p>Revisit the learning outcomes and redesign the assessment.</p></div>
+          <div class="reflect">
+            <textarea data-reflect="s2-consequences" data-label="What are the potential consequences of each approach (A–D)?" placeholder="A: …&#10;B: …&#10;C: …&#10;D: …"></textarea>
+          </div>
+          <div class="placeholder">
+            <span class="placeholder__flag">Link needed</span>
+            <p>[SETU to confirm: link to the SETU Assessment Redesign Framework, to connect learners to here.]</p>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>An opportunity to reconsider, not just speed up</p>
+            <p>The transformative potential of AI isn't simply doing existing things faster. It is giving us an opportunity to reconsider why and how we do them.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 3. HUMAN–AI COLLABORATION ---------- -->
+      <section class="section" data-title="Human–AI Collaboration" data-nav="Human–AI Collaboration">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> Human–AI Collaboration · What should remain human?</span>
+          <h1>What should remain human?</h1>
+          <p class="lede">As AI capabilities increase, the boundary between human and machine contribution becomes less obvious.</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~7 min</span><span><svg class="icon"><use href="#i-activity"/></svg> Includes an activity</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A human and AI working alongside each other — collaboration, not replacement</small></div>
+            <figcaption>Where human contribution creates value</figcaption>
+          </figure>
+
+          <p>AI can already write, analyse, translate, generate images, produce code, and support complex decision-making. Increasingly, it can complete multi-step tasks. So where does that leave us?</p>
+          <p>One approach is to ask which tasks AI can replace. A more useful question is: <strong>where does human contribution create value?</strong></p>
+          <p>Humans bring:</p>
+          <ul>
+            <li>Context.</li>
+            <li>Experience.</li>
+            <li>Ethical judgement.</li>
+            <li>Empathy.</li>
+            <li>Relationships.</li>
+            <li>Accountability.</li>
+            <li>Creativity grounded in lived experience.</li>
+            <li>An understanding of organisational culture.</li>
+            <li>And the ability to recognise when the technically efficient response isn't necessarily the right response.</li>
+          </ul>
+          <p>AI may enhance some of these activities. But delegating a task isn't the same as delegating responsibility. Efficiency should also not become our only measure of value.</p>
+          <p>Sometimes the slower, human process is valuable precisely because it involves conversation, reflection, creativity, relationship-building or care. AI fluency means recognising those forms of value too.</p>
+
+          <div class="spectrum" id="spectrum-continuum" data-spectrum>
+            <div class="activity__head"><span class="activity__badge">Activity</span><strong>The Human–AI Continuum</strong></div>
+            <p style="font-size:15px;margin:6px 0 4px">For each activity, where should it sit? Think about consequence, ambiguity, empathy, ethics, contextual knowledge, relationships, and accountability.</p>
+            <div class="spectrum__legend"><span>Human-led</span><span>Human + AI</span><span>AI-led, human oversight</span></div>
+            <div>
+              <div class="srow" data-note="Low-stakes and generative — a natural place for AI + human collaboration.">
+                <div class="srow__task">Brainstorming</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="AI can draft a first pass, but tone, relationship and what the student needs to hear are human judgement calls.">
+                <div class="srow__task">Student feedback</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Pattern-based and scalable — AI can lead with a human checking edge cases and bias.">
+                <div class="srow__task">Data categorisation</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Consequential for a person's livelihood, and often regulated — human-led with AI assisting at most.">
+                <div class="srow__task">Staff recruitment</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="AI can generate options and structure, but institutional context, values and accountability sit with people.">
+                <div class="srow__task">Policy drafting</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="AI can surface patterns quickly; interpretation and methodological judgement remain the researcher's.">
+                <div class="srow__task">Research analysis</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="A largely computational, constraint-satisfaction problem — a good candidate for AI leadership with human sign-off.">
+                <div class="srow__task">Timetable optimisation</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Often involves personal circumstances and emotional context — human-led, with AI assisting behind the scenes.">
+                <div class="srow__task">Student support</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="High consequence and high ambiguity — firmly human-led, informed by AI-generated analysis.">
+                <div class="srow__task">Strategic decision-making</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="A consequential academic judgement with accountability that stays with the assessor.">
+                <div class="srow__task">Assessment judgement</div>
+                <div class="srow__opts"><button data-v="0">Human-led</button><button data-v="1">Human + AI</button><button data-v="2">AI-led</button></div>
+                <div class="srow__note"></div>
+              </div>
+            </div>
+          </div>
+
+          <h2>Case study: The perfect response</h2>
+          <p style="font-size:15px">A student sends an email explaining that they are experiencing significant personal difficulties. AI can produce an empathetic, professionally worded response in seconds.</p>
+          <p style="font-size:15px;font-weight:600">Is producing the email the same as responding to the student?</p>
+          <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="perfect-response-reveal">Reveal the discussion</button></div>
+          <div class="callout callout--key" id="perfect-response-reveal" hidden>
+            <p class="callout__title">Language versus relationship</p>
+            <p>There's a real difference between language that <em>sounds</em> empathetic and the genuine human relational responsibility of actually responding: noticing, following up, checking in, and being accountable for what happens next. AI can help write the words. It can't carry the relationship.</p>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>Where human presence matters</p>
+            <p>The question isn't whether AI can perform a task. It is where human presence, expertise, relationships, and accountability matter.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 4. EVALUATING AI TOOLS AND EMERGING TECHNOLOGIES ---------- -->
+      <section class="section" data-title="Evaluating AI Tools" data-nav="Evaluating AI Tools">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> Evaluating AI Tools and Emerging Technologies · Technology should follow purpose</span>
+          <h1>Technology should follow purpose</h1>
+          <p class="lede">New AI tools appear almost every day. Being fluent doesn't mean trying all of them. It means having a consistent way of evaluating them.</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~8 min</span><span><svg class="icon"><use href="#i-activity"/></svg> Includes an activity</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A checklist or evaluation framework in use</small></div>
+            <figcaption>Before adopting an AI tool, consider the following</figcaption>
+          </figure>
+
+          <p>Before adopting an AI tool, consider the following.</p>
+          <div class="grid grid--3">
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-compass"/></svg></div><h3>Purpose</h3><p>What problem are we trying to solve? Are we beginning with a genuine need, or a technology looking for a use?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-bar-chart"/></svg></div><h3>Value</h3><p>Does the tool meaningfully improve the task, experience or outcome?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-search"/></svg></div><h3>Evidence</h3><p>What evidence supports the claims being made? Has the system been independently evaluated?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-lock"/></svg></div><h3>Data &amp; Privacy</h3><p>What information does the system collect, process, or store? Where does that information go?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-scale"/></svg></div><h3>Equity</h3><p>Who might benefit? Who might be disadvantaged? Could existing inequalities be reinforced?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-eye"/></svg></div><h3>Accessibility</h3><p>Can everyone use the system? Does it remove barriers or introduce new ones?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-layers"/></svg></div><h3>Sustainability</h3><p>What are the environmental implications? Could the benefit justify the resources — or could the same outcome be achieved more simply?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-briefcase"/></svg></div><h3>Integration</h3><p>How does the tool fit with existing systems and workflows?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-alert-triangle"/></svg></div><h3>Risk</h3><p>What happens if it fails? What is the consequence of an inaccurate or inappropriate output?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-shield"/></svg></div><h3>Oversight</h3><p>Where does meaningful human review occur?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-alert-circle"/></svg></div><h3>Exit</h3><p>What happens if the provider disappears, changes its terms, substantially increases its price, or withdraws the service?</p></div>
+          </div>
+
+          <p>AI relies on physical infrastructure that consumes energy and resources. Depending on the technology and location, water use, hardware requirements, and data storage may also be relevant. A small individual impact can become a much larger institutional consideration when multiplied across thousands of users and repeated activities — so sustainability should form part of technology evaluation from the beginning, not be considered after adoption.</p>
+
+          <div class="callout callout--key">
+            <p class="callout__title">Purpose first</p>
+            <p>Technology should follow purpose — not the other way around.</p>
+          </div>
+
+          <div class="grid grid--3">
+            <div class="tile"><h3>Tool A</h3><p>Exceptional capabilities and highly impressive outputs, but unclear privacy arrangements and limited transparency about how institutional data are processed.</p></div>
+            <div class="tile"><h3>Tool B</h3><p>Slightly less sophisticated, but secure, accessible, institutionally supported, and transparent about its data practices.</p></div>
+            <div class="tile"><h3>Tool C</h3><p>Produces marginally better outputs than Tool B but requires significantly greater computational resources and is considerably more expensive.</p></div>
+          </div>
+          <p style="font-size:15px;font-weight:600">Which would you recommend? Would "none of them" ever be a legitimate answer?</p>
+          <div class="reflect">
+            <textarea data-reflect="s4-tool-choice" data-label="Which tool would you recommend, and why? (justify against purpose, value, evidence, privacy, accessibility, equity, sustainability, cost, risk)" placeholder="I'd recommend… because…"></textarea>
+          </div>
+
+          <div class="placeholder">
+            <span class="placeholder__flag">Resource needed</span>
+            <p>Downloadable resource: <strong>SETU AI Tool Evaluation Checklist</strong>. [SETU to confirm: the checklist document, once available, replaces this placeholder with a real download link.]</p>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>Evaluate, don't chase</p>
+            <p>Fluent users don't chase tools. They evaluate them against purpose, values, evidence, impact and risk.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 5. AI AGENTS AND INCREASING AUTONOMY ---------- -->
+      <section class="section" data-title="AI Agents" data-nav="AI Agents">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> AI Agents and Increasing Autonomy · When AI moves from answering to acting</span>
+          <h1>When AI moves from answering to acting</h1>
+          <p class="lede">Much of our early experience with Generative AI followed a simple pattern: we asked, AI responded. That model is changing.</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~6 min</span><span><svg class="icon"><use href="#i-activity"/></svg> Includes an activity</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>An AI agent working through a sequence of automated steps</small></div>
+            <figcaption>From answering to acting</figcaption>
+          </figure>
+
+          <p>AI agents can increasingly work towards goals, use tools, access information, and complete sequences of actions with less human intervention. Imagine asking AI not simply to draft an agenda, but to:</p>
+          <div class="steps">
+            <div class="step"><div class="step__num"></div><div><h3>Review</h3><p>Review previous meeting notes.</p></div></div>
+            <div class="step"><div class="step__num"></div><div><h3>Identify</h3><p>Identify outstanding actions.</p></div></div>
+            <div class="step"><div class="step__num"></div><div><h3>Find</h3><p>Find relevant documents.</p></div></div>
+            <div class="step"><div class="step__num"></div><div><h3>Prepare</h3><p>Prepare the agenda.</p></div></div>
+            <div class="step"><div class="step__num"></div><div><h3>Draft</h3><p>Draft briefing notes.</p></div></div>
+            <div class="step"><div class="step__num"></div><div><h3>Distribute</h3><p>Distribute the materials.</p></div></div>
+          </div>
+          <p>The important difference is agency. The AI isn't simply generating content — it is taking actions. That creates significant opportunities but also new questions about permissions, privacy, resource use, control, accountability, and oversight.</p>
+          <p>It also changes the sustainability question. One interaction may become dozens or hundreds of automated model calls occurring behind the scenes. As we evaluate agentic systems, we therefore need to understand not only what the system achieves, but the resources and actions involved in achieving it. Greater automation doesn't automatically mean greater efficiency.</p>
+
+          <div class="callout callout--key">
+            <p class="callout__title">More autonomy, more governance</p>
+            <p>As autonomy increases, good governance becomes more important, not less.</p>
+          </div>
+
+          <div class="spectrum" id="spectrum-autonomy" data-spectrum>
+            <div class="activity__head"><span class="activity__badge">Activity</span><strong>How much autonomy?</strong></div>
+            <p style="font-size:15px;margin:6px 0 4px">For each task, at what point would you require human approval? Does your answer change according to consequence?</p>
+            <div class="spectrum__legend"><span>Suggest</span><span>Prepare</span><span>Act &amp; report</span><span>Act autonomously</span></div>
+            <div>
+              <div class="srow" data-note="Low consequence and easily reversed — a reasonable candidate for the AI to act and simply report back.">
+                <div class="srow__task">Scheduling meetings</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Suggest</button><button data-v="1">Prepare</button><button data-v="2">Act &amp; report</button><button data-v="3">Act autonomously</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Genuinely routine enquiries can tolerate more autonomy — but 'routine' needs to be defined carefully and monitored.">
+                <div class="srow__task">Responding to routine enquiries</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Suggest</button><button data-v="1">Prepare</button><button data-v="2">Act &amp; report</button><button data-v="3">Act autonomously</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Financial commitment, even for routine items, usually warrants at least a prepare-and-approve step.">
+                <div class="srow__task">Ordering equipment</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Suggest</button><button data-v="1">Prepare</button><button data-v="2">Act &amp; report</button><button data-v="3">Act autonomously</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Communications sent in the university's name and reaching students individually usually warrant human review first.">
+                <div class="srow__task">Sending student communications</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Suggest</button><button data-v="1">Prepare</button><button data-v="2">Act &amp; report</button><button data-v="3">Act autonomously</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="Changes to a student's official record carry real consequences for them — this is a strong candidate for suggest-only, human-approved.">
+                <div class="srow__task">Changing student records</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Suggest</button><button data-v="1">Prepare</button><button data-v="2">Act &amp; report</button><button data-v="3">Act autonomously</button></div>
+                <div class="srow__note"></div>
+              </div>
+              <div class="srow" data-note="High consequence, hard to reverse, and usually regulated — suggest only, with clear human accountability for the decision.">
+                <div class="srow__task">Making financial decisions</div>
+                <div class="srow__opts srow__opts--4"><button data-v="0">Suggest</button><button data-v="1">Prepare</button><button data-v="2">Act &amp; report</button><button data-v="3">Act autonomously</button></div>
+                <div class="srow__note"></div>
+              </div>
+            </div>
+          </div>
+
+          <h2>Reflection</h2>
+          <div class="reflect">
+            <textarea data-reflect="s5-comfortable" data-label="What would you be comfortable allowing an AI agent to do on your behalf?" placeholder="I'd be comfortable with…"></textarea>
+            <textarea data-reflect="s5-never" data-label="What would you never delegate, and why?" placeholder="I would never delegate… because…"></textarea>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>Oversight matters more as autonomy grows</p>
+            <p>As AI gains greater agency, human oversight, clear boundaries, proportionality and accountability become increasingly important.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 6. LEADING RESPONSIBLE CHANGE ---------- -->
+      <section class="section" data-title="Leading Responsible Change" data-nav="Leading Change">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> Leading Responsible Change · AI adoption is a people challenge</span>
+          <h1>AI adoption is a people challenge</h1>
+          <p class="lede">Introducing AI successfully isn't primarily a technology challenge. It's a people challenge.</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~6 min</span><span><svg class="icon"><use href="#i-activity"/></svg> Includes an activity</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A team or department in a change-management discussion</small></div>
+            <figcaption>Responsible AI adoption is something we do with people</figcaption>
+          </figure>
+
+          <p>Colleagues will approach AI from very different starting points. Some will be enthusiastic. Some will be anxious. Some will be sceptical. Some will feel overwhelmed. Some may worry that their expertise is becoming less valuable. And some will have legitimate concerns about privacy, academic integrity, sustainability, employment, accessibility, equity or the direction in which AI is developing.</p>
+          <p>Responsible leadership means creating space for these perspectives. It means neither dismissing concerns nor allowing unsubstantiated claims to determine our decisions. It means avoiding both pressure to adopt AI indiscriminately and resistance to exploring legitimate opportunities.</p>
+          <p>Good change begins with purpose:</p>
+          <ul>
+            <li>What problem are we trying to solve?</li>
+            <li>Who is affected?</li>
+            <li>Who needs to be involved?</li>
+            <li>What support will people need?</li>
+            <li>What concerns are legitimate?</li>
+            <li>What evidence do we have?</li>
+            <li>What are the wider consequences?</li>
+            <li>How will we know whether the change has actually improved anything?</li>
+          </ul>
+          <p>And importantly: have the people affected by the change had an opportunity to shape it?</p>
+
+          <div class="activity" data-activity="enthusiastic-manager">
+            <div class="activity__head"><span class="activity__badge">Case study</span><strong>The enthusiastic manager</strong></div>
+            <p style="font-size:15px">A manager discovers an AI tool that could automate a significant part of their team's administrative workload. They announce that everyone will begin using it next month.</p>
+            <p style="font-size:15px;font-weight:600">What's missing from this approach?</p>
+            <div class="btn-row"><button class="btn btn--accent" data-reveal-simple="manager-reveal">Reveal possible considerations</button></div>
+            <div class="callout" id="manager-reveal" hidden>
+              <ul style="margin-bottom:0">
+                <li>Consultation.</li>
+                <li>Needs analysis.</li>
+                <li>Privacy review.</li>
+                <li>Environmental impact.</li>
+                <li>Accessibility.</li>
+                <li>Training.</li>
+                <li>Testing.</li>
+                <li>Impact on roles.</li>
+                <li>Workflow redesign.</li>
+                <li>Success measures.</li>
+                <li>Space for legitimate concerns.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="reflect">
+            <textarea data-reflect="s6-redesign" data-label="Redesign the implementation — what would you do differently?" placeholder="If I were leading this change, I would…"></textarea>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>With people, not to them</p>
+            <p>Responsible AI adoption is something we do with people, not to them.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 7. AI, EQUITY, SUSTAINABILITY AND THE HUMAN FUTURE ---------- -->
+      <section class="section" data-title="Equity &amp; Sustainability" data-nav="Equity &amp; Sustainability">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> AI, Equity, Sustainability and the Human Future · Who gets to shape AI?</span>
+          <h1>Who gets to shape AI?</h1>
+          <p class="lede">AI is often presented as something happening to us. But the future of AI isn't predetermined — choices are being made every day about how these technologies are designed, deployed, and governed.</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~6 min</span><span><svg class="icon"><use href="#i-activity"/></svg> Includes an activity</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A diverse group of people in discussion — representing whose voices shape AI decisions</small></div>
+            <figcaption>The benefits and costs of AI are not evenly shared</figcaption>
+          </figure>
+
+          <p>Those choices have consequences. AI systems can reproduce existing inequalities. Access to advanced technologies isn't equal. Some languages, cultures and perspectives are better represented than others. People with different levels of digital confidence may experience AI very differently.</p>
+          <p>The environmental consequences are also uneven. The infrastructure supporting AI exists somewhere. Energy is generated somewhere. Water and natural resources are consumed somewhere. Hardware is manufactured from physical materials and eventually becomes waste. The benefits and costs of AI are therefore not necessarily experienced by the same people or communities.</p>
+          <p>At the same time, AI can contribute to addressing complex environmental and societal challenges through research, modelling, optimisation, and innovation. This is why simple narratives about AI being either inherently good or inherently harmful are rarely sufficient. Responsible decision-making requires us to consider benefits, costs, trade-offs, and whose perspectives are represented.</p>
+          <p>Universities have an important role in this conversation. We don't simply prepare people to use technology. We create knowledge. We develop critical thinkers. We question assumptions. We contribute research and evidence. And we educate people who will help shape society.</p>
+          <p>AI fluency therefore isn't simply about individual productivity. It is also about participation: who gets to contribute to decisions about AI? Whose voices are missing? Who benefits? Who carries the risk? What resources are being consumed? And what kind of AI-enabled university do we want to create?</p>
+
+          <div class="activity" data-activity="whose-voice">
+            <div class="activity__head"><span class="activity__badge">Scenario</span><strong>Whose voice is missing?</strong></div>
+            <p style="font-size:15px">A university is developing a new institutional AI strategy. Participants currently include senior management, IT, academics and external technology consultants.</p>
+            <p style="font-size:15px;font-weight:600">Who else should be involved?</p>
+            <div class="btn-row"><button class="btn btn--accent" data-reveal-simple="voices-reveal">Reveal potential perspectives</button></div>
+            <div class="callout" id="voices-reveal" hidden>
+              <ul style="margin-bottom:0">
+                <li>Students.</li>
+                <li>PMSS colleagues.</li>
+                <li>Researchers.</li>
+                <li>Library staff.</li>
+                <li>Accessibility and disability expertise.</li>
+                <li>Sustainability expertise.</li>
+                <li>Data protection.</li>
+                <li>International students.</li>
+                <li>Different disciplines.</li>
+                <li>Colleagues with low AI confidence.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="reflect">
+            <textarea data-reflect="s7-voices" data-label="How might including these perspectives change the decisions being made?" placeholder="If these voices were included…"></textarea>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>A collective responsibility</p>
+            <p>AI is not just something we use. We have a collective responsibility to consider its human, social and environmental consequences, and to shape its use accordingly.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 8. FROM INDIVIDUAL FLUENCY TO COLLECTIVE CAPABILITY ---------- -->
+      <section class="section" data-title="Collective Capability" data-nav="Collective Capability">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> From Individual Fluency to Collective Capability · What does this mean in your context?</span>
+          <h1>What does this mean in your context?</h1>
+          <p class="lede">AI fluency doesn't end with individual capability. A university becomes AI fluent when people can share expertise, question practice, experiment safely, and learn from one another.</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~5 min</span><span><svg class="icon"><use href="#i-edit"/></svg> Write</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>Colleagues from different roles/disciplines collaborating</small></div>
+            <figcaption>Collaboration across traditional boundaries</figcaption>
+          </figure>
+
+          <p>That requires collaboration across traditional boundaries:</p>
+          <ul>
+            <li>Academic and professional services.</li>
+            <li>Different disciplines.</li>
+            <li>Staff and students.</li>
+            <li>Technology specialists and educators.</li>
+            <li>Researchers and practitioners.</li>
+            <li>Sustainability and accessibility expertise.</li>
+            <li>Leadership and those delivering services every day.</li>
+          </ul>
+          <p>No single person has all the answers. And in a field changing this quickly, nobody ever will. Collective capability is therefore more powerful than individual expertise. It also allows us to recognise consequences that may be invisible from one perspective:</p>
+          <ul>
+            <li>An apparently excellent technical solution may create an accessibility problem.</li>
+            <li>An efficient administrative solution may create a poor human experience.</li>
+            <li>An innovative teaching tool may introduce privacy concerns.</li>
+            <li>A highly capable AI system may consume considerably more resources for only marginal additional benefit.</li>
+          </ul>
+          <p>Bringing different perspectives together helps us make better decisions.</p>
+
+          <h2>Interactive activity: Your sphere of influence</h2>
+          <p style="font-size:15px">Consider three levels, and record one action or question at each.</p>
+          <div class="reflect">
+            <textarea data-reflect="s8-me" data-label="Me — what could I change in my own practice?" placeholder="One thing I could change in my own practice…"></textarea>
+            <textarea data-reflect="s8-us" data-label="Us — what conversation should happen within my team, programme or department?" placeholder="A conversation my team/programme/department should have…"></textarea>
+            <textarea data-reflect="s8-setu" data-label="SETU — what issue requires wider institutional collaboration?" placeholder="An issue that needs wider institutional collaboration…"></textarea>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>Fluency grows through collaboration</p>
+            <p>AI fluency grows through collaboration, experimentation and shared learning — not individual expertise alone.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 9. THE FLUENCY CHALLENGE ---------- -->
+      <section class="section" data-title="The Fluency Challenge" data-nav="The Fluency Challenge">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> The Fluency Challenge · Redesign, don't just automate</span>
+          <h1>Redesign, don't just automate</h1>
+          <p class="lede">Choose one genuine aspect of your professional practice — a process, an assessment, a service, a communication activity, a research workflow, a student experience, or a recurring administrative task.</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~10 min</span><span><svg class="icon"><use href="#i-edit"/></svg> Write</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A person mapping out or redesigning a process on paper/whiteboard</small></div>
+            <figcaption>Don't begin by asking how AI could do this — begin with the purpose</figcaption>
+          </figure>
+
+          <p>Don't begin by asking: <em>how could AI do this?</em> Begin with the purpose.</p>
+
+          <div class="steps">
+            <div class="step"><div class="step__num"></div><div>
+              <h3>Purpose</h3>
+              <p>Why does this activity exist? What outcome are you trying to achieve?</p>
+            </div></div>
+            <div class="step"><div class="step__num"></div><div>
+              <h3>Experience</h3>
+              <p>Who is involved? What currently works? Where are the barriers or frustrations?</p>
+            </div></div>
+            <div class="step"><div class="step__num"></div><div>
+              <h3>Possibility</h3>
+              <p>Could AI create meaningful value? Could it enable an entirely different approach?</p>
+            </div></div>
+            <div class="step"><div class="step__num"></div><div>
+              <h3>Humanity</h3>
+              <p>Where are human expertise, relationships, empathy, creativity, and judgement essential?</p>
+            </div></div>
+            <div class="step"><div class="step__num"></div><div>
+              <h3>Equity &amp; Accessibility</h3>
+              <p>Who benefits from the proposed change? Who might be excluded or disadvantaged? Could AI remove existing barriers — or create new ones?</p>
+            </div></div>
+            <div class="step"><div class="step__num"></div><div>
+              <h3>Sustainability &amp; Proportionality</h3>
+              <p>What resources would the proposed approach require? Does the value created justify the use of AI? Could the same outcome be achieved more simply? What happens if this is adopted at scale — hundreds or thousands of repeated interactions, not just one?</p>
+            </div></div>
+            <div class="step"><div class="step__num"></div><div>
+              <h3>Risk</h3>
+              <p>What could go wrong? What happens when the AI is inaccurate? What are the privacy, ethical, professional or reputational implications?</p>
+            </div></div>
+            <div class="step"><div class="step__num"></div><div>
+              <h3>Redesign</h3>
+              <p>Develop your revised approach. AI may play a significant role. A small role. Or no role at all.</p>
+            </div></div>
+            <div class="step"><div class="step__num"></div><div>
+              <h3>Evaluate</h3>
+              <p>How would you know whether your redesigned approach is actually better? Consider quality, human experience, time, accessibility, equity, sustainability, cost, learning and professional judgement.</p>
+            </div></div>
+          </div>
+
+          <div class="callout callout--info">
+            <p class="callout__title">The final question</p>
+            <p>If AI disappeared tomorrow, would this redesign still have taught you something useful about your practice? If the answer is yes, you've moved beyond simply adopting technology — you've used AI as a catalyst for critical reflection and improvement.</p>
+          </div>
+
+          <h2>Record briefly</h2>
+          <div class="reflect">
+            <textarea data-reflect="s9-purpose" data-label="The practice I chose, and its purpose and experience today" placeholder="What I chose: …&#10;Why it exists, and where the current barriers or frustrations are: …"></textarea>
+            <textarea data-reflect="s9-redesign" data-label="My redesigned approach — where AI plays a role, and where it doesn't" placeholder="My redesign: …&#10;Where human judgement, relationships or accountability had to stay central: …"></textarea>
+            <textarea data-reflect="s9-evaluate" data-label="How I'd know it's actually better, and what I'd watch for at scale" placeholder="How I'd evaluate it: …&#10;What I'd watch for if this were adopted across SETU: …"></textarea>
+          </div>
+
+          <div class="callout callout--takeaway">
+            <p class="callout__title"><span class="km-pill">Key message</span>Judged by the quality of the decision</p>
+            <p>Fluency is demonstrated not by how much AI you introduce, but by the quality of the decisions you make about change.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 10. CONTINUING THE JOURNEY ---------- -->
+      <section class="section" data-title="Continuing the Journey" data-nav="Continuing the Journey">
+        <div class="section__card">
+          <span class="eyebrow"><span class="dot"></span> Continuing the Journey · What comes next</span>
+          <h1>Continuing the journey</h1>
+          <p class="lede">You've now completed the three stages of the AI at SETU learning journey. AI Literacy helped you understand AI. AI Competency helped you work effectively with AI. AI Fluency has asked you to critically evaluate, adapt, and shape practice in an AI-enabled environment.</p>
+          <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~6 min</span><span><svg class="icon"><use href="#i-edit"/></svg> Write</span></div>
+          <hr class="rule" />
+
+          <figure class="figure">
+            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A reflective, forward-looking closing image</small></div>
+            <figcaption>Fluency isn't something you complete</figcaption>
+          </figure>
+
+          <p>But AI fluency isn't something you complete. Technology will continue to change. New models will emerge. Capabilities that seem remarkable today will become ordinary. New opportunities will appear. So will new challenges.</p>
+          <p>Remaining fluent doesn't require keeping up with every development. It requires something more sustainable:</p>
+          <ul>
+            <li>Curiosity.</li>
+            <li>Critical thinking.</li>
+            <li>Professional judgement.</li>
+            <li>A willingness to experiment.</li>
+            <li>An ability to question.</li>
+            <li>An awareness of wider human and environmental impacts.</li>
+            <li>And an openness to learning with others.</li>
+          </ul>
+          <p>Responsible AI isn't about maximising AI use. Nor is it about avoiding AI because it has risks. It is about making informed and proportionate decisions. Sometimes AI may provide significant educational, professional, accessibility, research, or societal benefits that justify the resources involved. Sometimes a simpler technology — or no technology at all — may be the better choice. AI fluency means being capable of making that distinction.</p>
+          <p>Our aim at SETU isn't to predict exactly what AI will become. It is to ensure that our people have the confidence, knowledge and agency to respond thoughtfully as it evolves. The future of AI in higher education isn't simply something that will happen to us. We have a role in shaping it.</p>
+
+          <h2>Rate yourself again</h2>
+          <div class="rating" data-rating="end">
+            <div class="rating__row" data-statement="evaluate-systems">
+              <div class="rating__label">I can critically evaluate an AI system or tool, not just the outputs it produces.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__row" data-statement="automate-or-redesign">
+              <div class="rating__label">I can judge whether a process should be automated, augmented, redesigned, or kept human-led.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__row" data-statement="human-central">
+              <div class="rating__label">I can identify where human judgement, relationships and accountability must stay central.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__row" data-statement="equity-sustainability">
+              <div class="rating__label">I can weigh equity, sustainability and risk when deciding whether to adopt an AI tool.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__row" data-statement="contribute">
+              <div class="rating__label">I can contribute to conversations about how AI should — and shouldn't — be used at SETU.</div>
+              <div class="rating__scale" role="group" aria-label="Rate your confidence, 1 to 5"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button></div>
+              <div class="rating__compare" hidden></div>
+            </div>
+            <div class="rating__hint">If you rated yourself at the start, you'll see how each answer compares once you rate it again.</div>
+          </div>
+
+          <h2>Final reflection</h2>
+          <p style="font-size:15px">Return to the beginning of the entire learning journey and ask yourself:</p>
+          <div class="reflect">
+            <textarea data-reflect="s10-understand" data-label="What do I now understand about AI that I didn't before? What am I doing differently, and what am I more critical about?" placeholder="What I now understand…&#10;What I'm doing differently…&#10;What I'm more critical about…"></textarea>
+            <textarea data-reflect="s10-opportunities" data-label="What opportunities do I now see, and what boundaries matter to me?" placeholder="Opportunities I now see…&#10;Boundaries that matter to me…"></textarea>
+            <textarea data-reflect="s10-university" data-label="How will I consider the wider human, social and environmental consequences of my choices — and what kind of AI-enabled university do I want to help create?" placeholder="How I'll weigh the wider consequences of my choices…&#10;The kind of AI-enabled university I want to help create…"></textarea>
+          </div>
+
+          <div class="reflect__saved" id="reflectSaved"></div>
+          <div class="btn-row">
+            <button class="btn btn--ghost" id="reflectDownload"><svg class="icon"><use href="#i-download"/></svg> Download my notes</button>
+            <button class="btn btn--ghost" id="reflectClear">Clear</button>
+          </div>
+
+          <div class="callout callout--takeaway" style="margin-top:22px">
+            <p class="callout__title"><span class="km-pill">Final key message</span></p>
+            <ul style="margin-bottom:0">
+              <li>Understand the technology.</li>
+              <li>Use it with judgement.</li>
+              <li>Question its impact.</li>
+              <li>Consider its costs as well as its benefits.</li>
+              <li>Keep people at the centre.</li>
+              <li>Help shape what comes next.</li>
+            </ul>
+          </div>
+
+          <div class="callout callout--setu">
+            <p class="callout__title">You've completed the programme</p>
+            <p>AI Literacy → AI Competency → AI Fluency. That's the full arc of SETU's GenAI programme — but fluency itself doesn't end here. It continues in how you practise, question and collaborate from now on. [SETU to confirm: any link to an ongoing AI community of practice or CPD channel, if one exists.]</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- COMPLETE ---------- -->
+      <section class="section" data-title="You're done" data-nav="Finish">
+        <div class="section__card center">
+          <div class="done-badge">✓</div>
+          <span class="eyebrow" style="justify-content:center"><span class="dot"></span> Programme complete</span>
+          <h1>Well done.</h1>
+          <p class="lede">You've completed <strong>AI Fluency</strong> — the third and final course of SETU's GenAI programme. You've practised questioning AI systems, rethinking practice rather than just automating it, judging where human presence matters, evaluating emerging tools, weighing autonomy and oversight, leading responsible change, and considering AI's wider equity and sustainability implications.</p>
+          <hr class="rule" />
+
+          <!-- Certificate of completion -->
+          <div class="certgen" id="certgen">
+            <h3>Download your certificate of completion</h3>
+            <p style="margin:0;font-size:14.5px;color:var(--text-soft)">Enter your name as you'd like it to appear, then preview or download your certificate (save as PDF, or print).</p>
+            <div class="certgen__row">
+              <input type="text" id="certName" placeholder="Your full name" autocomplete="name" aria-label="Your name for the certificate" />
+              <button class="btn btn--ghost" id="certPreviewBtn" type="button">Preview</button>
+              <button class="btn btn--primary" id="certDownloadBtn" type="button"><svg class="icon"><use href="#i-download"/></svg> Download certificate</button>
+            </div>
+            <p class="certgen__hint" id="certHint">Your name stays on this device — it is only used to generate the certificate.</p>
+          </div>
+
+          <div class="callout callout--info" style="text-align:left">
+            <p class="callout__title">Where next</p>
+            <p>You've now completed all three courses in SETU's GenAI programme. Fluency isn't a destination — it's an ongoing practice of curiosity, critical thinking and collaboration. [SETU to confirm: any links back to Course 1 (AI Literacy) or Course 2 (AI Competency), or to an ongoing AI community of practice, for anyone revisiting.]</p>
+          </div>
+          <div class="btn-row" style="justify-content:center">
+            <button class="btn btn--ghost" data-goto="0"><svg class="icon"><use href="#i-arrow-left"/></svg> Back to the start</button>
+          </div>
+
+          <hr class="rule" />
+          <div class="credits">
+            <p>Developed by the Centre for Academic Practice, based on a course development script for AI Fluency. [SETU to confirm: script author credit line.] The course was built using Claude Code. [SETU to confirm: image credit line, once real images are supplied.]</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===================== PAGER ===================== -->
+  <div class="pager">
+    <div class="pager__inner">
+      <button class="btn btn--ghost" id="prevBtn">← Previous</button>
+      <div class="pager__spacer"></div>
+      <span class="pager__count" id="pagerCount"></span>
+      <div class="pager__spacer"></div>
+      <button class="btn btn--primary" id="nextBtn">Next →</button>
+    </div>
+  </div>
+
+  <!-- Certificate document — lives at body level so it can be printed on its own -->
+  <div class="certificate" id="certificate" aria-hidden="true">
+    <div class="certificate__border">
+      <img class="certificate__logo" src="assets/img/setu-logo.png" alt="South East Technological University" />
+      <div class="certificate__kicker">Certificate of Completion</div>
+      <h2>SETU GenAI Programme</h2>
+      <p class="certificate__lead">This is to certify that</p>
+      <div class="certificate__name" id="certNameOut">Your Name</div>
+      <p class="certificate__course">has successfully completed<br><strong>Course 3 — AI Fluency: Shaping Practice in an AI-Enabled University</strong></p>
+      <div class="certificate__meta">
+        <div><span>Date</span><b id="certDate">—</b></div>
+        <div><span>Programme</span><b>SETU GenAI · Course 3 of 3</b></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image lightbox — lives at body level, populated on demand -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox__backdrop" data-lightbox-close></div>
+    <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption">
+      <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close image">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+      <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+      <p class="lightbox__caption" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <script src="assets/js/scorm.js"></script>
+  <script src="assets/js/course.js"></script>
+  <script src="assets/js/certificate.js"></script>
+</body>
+</html>
