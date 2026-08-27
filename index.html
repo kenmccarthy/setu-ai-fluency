@@ -84,10 +84,31 @@
   <div class="layout">
     <!-- ===================== TABLE OF CONTENTS ===================== -->
     <div class="toc-backdrop" id="tocBackdrop"></div>
-    <nav class="toc" id="toc" aria-label="Course contents">
-      <h2>Contents</h2>
-      <ol id="tocList"><!-- populated by JS --></ol>
-    </nav>
+    <!-- Wrapper needed because .layout is a 2-column CSS grid (260px sidebar / 1fr
+         content) — without it, a second top-level element here flows into the
+         content column instead of stacking under the TOC. The wrapper (not #toc)
+         now owns the sticky positioning, so the TOC and the buttons scroll and pin
+         together as one unit; #toc's own sticky is switched off inline so the two
+         don't fight each other. -->
+    <div class="sidebar-col" style="position:sticky; top:78px;">
+      <nav class="toc" id="toc" aria-label="Course contents" style="position:static;">
+        <h2>Contents</h2>
+        <ol id="tocList"><!-- populated by JS --></ol>
+      </nav>
+
+      <!-- Cross-course navigation. Replace the three href="#" values with each
+           course's real URL once hosting is confirmed. -->
+      <nav class="course-links" aria-label="Other SETU GenAI courses"
+           style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+                  padding:14px;box-shadow:var(--shadow-sm);margin-top:14px;
+                  display:flex;flex-direction:column;gap:8px;">
+        <h2 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+                   color:var(--text-mute);margin:4px 6px 6px;">GenAI Programme</h2>
+        <a class="btn" href="#" style="background:var(--sea-green);color:#fff;width:100%;justify-content:left;">AI Literacy</a>
+        <a class="btn" href="#" style="background:var(--clover);color:#fff;width:100%;justify-content:left;">AI Competency</a>
+        <a class="btn" href="#" style="background:var(--barrow-blue);color:#fff;width:100%;justify-content:left;">AI Fluency</a>
+      </nav>
+    </div>
 
     <!-- ===================== CONTENT ===================== -->
     <main class="content" id="main">
@@ -110,7 +131,7 @@
           <p>AI fluency means being able to critically evaluate emerging technologies, adapt your practice, make informed decisions, and contribute to conversations about how AI should, and should not, be used.</p>
 
           <figure class="figure figure--banner">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>Wide welcome/hero banner for AI Fluency — people from different roles across the university in conversation</small></div>
+            <img class="figure__img" src="assets/img/ai-banner.png" alt="People from different roles across the university in conversation about AI" />
           </figure>
 
           <h2>More difficult questions</h2>
@@ -200,7 +221,7 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>Behind the interface — the infrastructure and people behind an AI system</small></div>
+            <img class="figure__img" src="assets/img/ai-system.png" alt="Behind every interaction is a system, not just an answer" />
             <figcaption>Behind every interaction is a system, not just an answer</figcaption>
           </figure>
 
@@ -277,7 +298,7 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A process being redesigned, not just sped up — sketching/whiteboard imagery</small></div>
+            <img class="figure__img" src="assets/img/ai-redesign.png" alt="Redesigning a process with AI" />
             <figcaption>Redesign, not just automation</figcaption>
           </figure>
 
@@ -341,7 +362,7 @@
           </div>
           <div class="callout callout--info">
             <p class="callout__title">Read more</p>
-            <p>See the <a href="https://arf.genain3.ie" target="_blank" rel="noopener noreferrer">SETU Assessment Redesign Framework</a> for practical guidance on redesigning assessments.</p>
+            <p>See the <a href="https://arf.genain3.ie" target="_blank" rel="noopener noreferrer">GenAI:N3 Assessment Redesign Framework</a> for practical guidance on redesigning assessments.</p>
           </div>
 
           <div class="callout callout--takeaway">
@@ -361,7 +382,7 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A human and AI working alongside each other — collaboration, not replacement</small></div>
+            <img class="figure__img" src="assets/img/ai-collaboration.png" alt="A human and AI working alongside each other — collaboration, not replacement" />
             <figcaption>Where human contribution creates value</figcaption>
           </figure>
 
@@ -466,7 +487,7 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A checklist or evaluation framework in use</small></div>
+            <img class="figure__img" src="assets/img/ai-evaluation.png" alt="Before adopting an AI tool, consider the following" />
             <figcaption>Before adopting an AI tool, consider the following</figcaption>
           </figure>
 
@@ -524,7 +545,7 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>An AI agent working through a sequence of automated steps</small></div>
+            <img class="figure__img" src="assets/img/ai-agents.png" alt="AI agents can increasingly work towards goals, use tools, access information, and complete sequences of actions with less human intervention." />
             <figcaption>From answering to acting</figcaption>
           </figure>
 
@@ -606,7 +627,7 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A team or department in a change-management discussion</small></div>
+            <img class="figure__img" src="assets/img/ai-adoption.png" alt="Responsible AI adoption is something we do with people" />
             <figcaption>Responsible AI adoption is something we do with people</figcaption>
           </figure>
 
@@ -667,8 +688,8 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A diverse group of people in discussion — representing whose voices shape AI decisions</small></div>
-            <figcaption>The benefits and costs of AI are not evenly shared</figcaption>
+            <img class="figure__img" src="assets/img/ai-shaping.png" alt="A diverse group of people in discussion — representing whose voices shape AI decisions" />
+            <figcaption>A diverse group of people in discussion — representing whose voices shape AI decisions</figcaption>
           </figure>
 
           <p>Those choices have consequences. AI systems can reproduce existing inequalities. Access to advanced technologies isn't equal. Some languages, cultures and perspectives are better represented than others. People with different levels of digital confidence may experience AI very differently.</p>
@@ -718,7 +739,7 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>Colleagues from different roles/disciplines collaborating</small></div>
+            <img class="figure__img" src="assets/img/ai-discussion.png" alt="A diverse group of people in discussion — representing collaboration across traditional boundaries" />
             <figcaption>Collaboration across traditional boundaries</figcaption>
           </figure>
 
@@ -766,7 +787,7 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A person mapping out or redesigning a process on paper/whiteboard</small></div>
+            <img class="figure__img" src="assets/img/ai-process.png" alt="Don't begin by asking how AI could do this — begin with the purpose" />
             <figcaption>Don't begin by asking how AI could do this — begin with the purpose</figcaption>
           </figure>
 
@@ -840,7 +861,7 @@
           <hr class="rule" />
 
           <figure class="figure">
-            <div class="figure__slot"><span class="placeholder__flag">Image needed</span><small>A reflective, forward-looking closing image</small></div>
+            <img class="figure__img" src="assets/img/ai-reflection.png" alt="Fluency isn't something you complete" />
             <figcaption>Fluency isn't something you complete</figcaption>
           </figure>
 
