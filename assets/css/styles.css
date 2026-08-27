@@ -64,8 +64,12 @@
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 }
 
+/* Dark palette applies automatically from the OS/browser preference, UNLESS
+   the theme toggle has explicitly set data-theme (in which case that choice
+   wins in both directions — see the :root[data-theme="dark"] block below,
+   and :not([data-theme="light"]) here). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --brand:        #93a6b6;   /* lightened slate for dark bg */
     --brand-strong: #b7c4d0;
     --brand-tint:   #1b242d;
@@ -87,6 +91,26 @@
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.6);
     --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
   }
+}
+:root[data-theme="dark"] {
+  --brand:        #93a6b6;
+  --brand-strong: #b7c4d0;
+  --brand-tint:   #1b242d;
+  --accent:       color-mix(in srgb, var(--accent-base) 65%, white);
+  --accent-tint:  color-mix(in srgb, var(--accent-base) 20%, black);
+  --bg:        #0f151b;
+  --surface:   #171f27;
+  --surface-2: #1e2831;
+  --border:    #2b3540;
+  --text:      #e2e8ef;
+  --text-soft: #b4bfca;
+  --text-mute: #8894a1;
+  --warn:      #e6b545; --warn-tint: #26200f;
+  --danger:    #ef7a82; --danger-tint:#2c1618;
+  --ok:        var(--accent); --ok-tint: var(--accent-tint);
+  --info:      #5aa9e6; --info-tint: #0f2130;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.6);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
 }
 
 * { box-sizing: border-box; }
@@ -162,6 +186,13 @@ body::before {
 .brand-text b { display: block; font-family: var(--font-head); font-weight: 700; font-size: 13px; line-height: 1.2; color: var(--brand-strong); }
 .brand-text span { display: block; font-size: 12px; color: var(--text-mute); }
 .topbar__spacer { flex: 1; }
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 38px; height: 38px; border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-soft); border-radius: 8px; cursor: pointer;
+}
+.theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+.theme-toggle .icon { width: 18px; height: 18px; }
 .menu-btn {
   display: none; border: 1px solid var(--border); background: var(--surface);
   color: var(--text); border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 14px;
@@ -819,8 +850,9 @@ a:focus-visible, button:focus-visible, .chip:focus-visible {
 .rating__scale button:hover { border-color: var(--step); }
 .rating__scale button[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
 @media (prefers-color-scheme: dark) {
-  .rating__scale button { background: color-mix(in srgb, var(--step) 24%, var(--surface-2)); border-color: color-mix(in srgb, var(--step) 45%, var(--border)); }
+  :root:not([data-theme="light"]) .rating__scale button { background: color-mix(in srgb, var(--step) 24%, var(--surface-2)); border-color: color-mix(in srgb, var(--step) 45%, var(--border)); }
 }
+:root[data-theme="dark"] .rating__scale button { background: color-mix(in srgb, var(--step) 24%, var(--surface-2)); border-color: color-mix(in srgb, var(--step) 45%, var(--border)); }
 .rating__compare { font-size: 13px; color: var(--accent); margin-top: 8px; font-weight: 600; }
 .rating__compare[hidden] { display: none; }
 .rating__hint { font-size: 12.5px; color: var(--text-mute); }
