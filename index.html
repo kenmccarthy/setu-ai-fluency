@@ -282,8 +282,8 @@
       <!-- ---------- 2. RETHINKING PRACTICE ---------- -->
       <section class="section" data-title="Rethinking Practice" data-nav="Rethinking Practice">
         <div class="section__card">
-          <span class="eyebrow"><span class="dot"></span> Rethinking Practice · Don't automate something just because we've always done it</span>
-          <h1>Don't automate something just because we've always done it</h1>
+          <span class="eyebrow"><span class="dot"></span> Rethinking Practice · Don't automate something just because we can</span>
+          <h1>Don't automate something just because we can</h1>
           <p class="lede">One of the easiest ways to use AI is to make existing processes faster. But fluency asks a more challenging question: should we be doing the same thing faster — or should we be doing something differently?</p>
           <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~7 min</span><span><svg class="icon"><use href="#i-activity"/></svg> Includes an activity</span></div>
           <hr class="rule" />
@@ -293,7 +293,13 @@
             <figcaption>Redesign, not just automation</figcaption>
           </figure>
 
-          <p>Write the email faster. Summarise the report faster. Create the presentation faster. Analyse the feedback faster. Those efficiencies can be valuable.</p>
+          <p>Those efficiencies can be valuable:</p>
+          <ul>
+            <li>Write the email faster.</li>
+            <li>Summarise the report faster.</li>
+            <li>Create the presentation faster.</li>
+            <li>Analyse the feedback faster.</li>
+          </ul>
 
           <p>Consider assessment. If an assessment can now be completed almost entirely by Generative AI, we could spend considerable effort trying to prevent students from using it. Or we could return to the fundamental question: <strong>what learning are we actually trying to assess?</strong></p>
           <p>The same principle applies beyond teaching. If AI can automate part of an administrative process, perhaps the opportunity isn't simply to automate the existing workflow. Perhaps we should reconsider why the process exists, where friction occurs, and where human interaction provides genuine value.</p>
@@ -307,7 +313,6 @@
           <div class="spectrum" id="spectrum-rethink" data-spectrum>
             <div class="activity__head"><span class="activity__badge">Activity</span><strong>Automate, augment, rethink or retain?</strong></div>
             <p style="font-size:15px;margin:6px 0 4px">For each task, what's the right response? Then ask: if this approach were adopted across the university, what would the benefits and costs be — in time, quality, accessibility, workload, environmental resources and human experience?</p>
-            <div class="spectrum__legend"><span>Automate</span><span>Augment</span><span>Rethink</span><span>Keep human-led</span></div>
             <div>
               <div class="srow" data-note="A strong candidate for automation — but check who currently adds judgement while minuting (flagging risks, capturing nuance) before removing the human step entirely.">
                 <div class="srow__task">Producing standard meeting minutes</div>
@@ -342,14 +347,25 @@
             </div>
           </div>
 
-          <h2>Case study: Assessment redesign</h2>
-          <p style="font-size:15px">An academic discovers that students can generate convincing responses to an existing essay using AI. Consider four responses:</p>
-          <div class="callout"><p class="callout__title">A</p><p>Prohibit AI.</p></div>
-          <div class="callout"><p class="callout__title">B</p><p>Introduce AI detection.</p></div>
-          <div class="callout"><p class="callout__title">C</p><p>Retain the essay but require students to disclose AI use.</p></div>
-          <div class="callout"><p class="callout__title">D</p><p>Revisit the learning outcomes and redesign the assessment.</p></div>
+          <div class="activity" data-activity="assessment-redesign">
+            <div class="activity__head"><span class="activity__badge">Case study</span><strong>Assessment redesign</strong></div>
+            <p style="font-size:15px">An academic discovers that students can generate convincing responses to an existing essay using AI. Four responses are on the table:</p>
+            <div class="grid grid--2">
+              <div class="tile"><h3>A</h3><p>Prohibit AI.</p></div>
+              <div class="tile"><h3>B</h3><p>Introduce AI detection.</p></div>
+              <div class="tile"><h3>C</h3><p>Retain the essay but require students to disclose AI use.</p></div>
+              <div class="tile"><h3>D</h3><p>Revisit the learning outcomes and redesign the assessment.</p></div>
+            </div>
+            <p style="font-size:15px;font-weight:600">Which response addresses the underlying issue — and what would each of the others cost you?</p>
+            <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="assessment-redesign-reveal">Reveal the discussion</button></div>
+            <div class="callout" id="assessment-redesign-reveal" hidden>
+              <p><strong>A</strong> and <strong>B</strong> treat the symptom — a new tool will beat detection again next term.</p>
+              <p><strong>C</strong> manages disclosure, but a student can still comply without the essay measuring what it once did.</p>
+              <p><strong>D</strong> is the only option that asks what the assessment was actually for, and redesigns it to still test that.</p>
+            </div>
+          </div>
           <div class="reflect">
-            <textarea data-reflect="s2-consequences" data-label="What are the potential consequences of each approach (A–D)?" placeholder="A: …&#10;B: …&#10;C: …&#10;D: …"></textarea>
+            <textarea data-reflect="s2-choice" data-label="Which response would you choose, and why? What would you need to change to make it work?" placeholder="I'd choose… because… To make it work, I'd need to…"></textarea>
           </div>
           <div class="callout callout--info">
             <p class="callout__title">Read more</p>
@@ -397,7 +413,6 @@
           <div class="spectrum" id="spectrum-continuum" data-spectrum>
             <div class="activity__head"><span class="activity__badge">Activity</span><strong>The Human–AI Continuum</strong></div>
             <p style="font-size:15px;margin:6px 0 4px">For each activity, where should it sit? Think about consequence, ambiguity, empathy, ethics, contextual knowledge, relationships, and accountability.</p>
-            <div class="spectrum__legend"><span>Human-led</span><span>Human + AI</span><span>AI-led, human oversight</span></div>
             <div>
               <div class="srow" data-note="Low-stakes and generative — a natural place for AI + human collaboration.">
                 <div class="srow__task">Brainstorming</div>
@@ -494,7 +509,7 @@
             <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-briefcase"/></svg></div><h3>Integration</h3><p>How does the tool fit with existing systems and workflows?</p></div>
             <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-alert-triangle"/></svg></div><h3>Risk</h3><p>What happens if it fails? What is the consequence of an inaccurate or inappropriate output?</p></div>
             <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-shield"/></svg></div><h3>Oversight</h3><p>Where does meaningful human review occur?</p></div>
-            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-alert-circle"/></svg></div><h3>Exit</h3><p>What happens if the provider disappears, changes its terms, substantially increases its price, or withdraws the service?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-alert-circle"/></svg></div><h3>Continuity</h3><p>What happens if the provider disappears, changes its terms, substantially increases its price, or withdraws the service?</p></div>
           </div>
 
           <p>AI relies on physical infrastructure that consumes energy and resources. Depending on the technology and location, water use, hardware requirements, and data storage may also be relevant. A small individual impact can become a much larger institutional consideration when multiplied across thousands of users and repeated activities — so sustainability should form part of technology evaluation from the beginning, not be considered after adoption.</p>
@@ -560,7 +575,6 @@
           <div class="spectrum" id="spectrum-autonomy" data-spectrum>
             <div class="activity__head"><span class="activity__badge">Activity</span><strong>How much autonomy?</strong></div>
             <p style="font-size:15px;margin:6px 0 4px">For each task, at what point would you require human approval? Does your answer change according to consequence?</p>
-            <div class="spectrum__legend"><span>Suggest</span><span>Prepare</span><span>Act &amp; report</span><span>Act autonomously</span></div>
             <div>
               <div class="srow" data-note="Low consequence and easily reversed — a reasonable candidate for the AI to act and simply report back.">
                 <div class="srow__task">Scheduling meetings</div>
