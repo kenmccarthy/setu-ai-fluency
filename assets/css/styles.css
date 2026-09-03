@@ -152,6 +152,12 @@ body::before {
 :root[data-theme="light"] body::before { background-image: url("../img/setu-symbol.png"); opacity: .05; }
 @media print { body::before { display: none !important; } }
 
+/* ---------------- Visually-hidden (a11y) ---------------- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
 /* ---------------- Skip link (a11y) ---------------- */
 .skip-link {
   position: absolute; left: -999px; top: 0; z-index: 100;
@@ -518,6 +524,33 @@ hr.rule { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
 .case p { margin: 0 0 8px; font-size: 14.5px; }
 .case .qs { font-size: 14px; color: var(--text-soft); font-style: italic; }
 
+/* ---------------- Printable checklist (Evaluating AI Tools) ---------------- */
+.checklist {
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); padding: 18px; margin: 20px 0; box-shadow: var(--shadow-sm);
+}
+.checklist__head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.checklist__badge {
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--accent); background: var(--accent-tint); padding: 3px 9px; border-radius: 99px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.checklist__meta { display: flex; flex-wrap: wrap; gap: 6px 28px; font-size: 14px; color: var(--text-soft); margin-bottom: 16px; }
+.checklist__meta i { display: inline-block; min-width: 140px; border-bottom: 1px solid var(--border); font-style: normal; }
+.checklist__table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.checklist__table th, .checklist__table td { text-align: left; padding: 10px 12px; border: 1px solid var(--border); vertical-align: top; }
+.checklist__table thead th { background: var(--surface-2); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-mute); }
+.checklist__table tbody td:nth-child(2) { font-weight: 600; white-space: nowrap; }
+.checklist__ck { width: 40px; text-align: center !important; }
+.checklist__ck input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+@media (max-width: 620px) {
+  .checklist__table, .checklist__table thead, .checklist__table tbody, .checklist__table th, .checklist__table td, .checklist__table tr { display: block; }
+  .checklist__table thead tr { position: absolute; left: -9999px; }
+  .checklist__table tr { border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 10px; padding: 10px 12px; }
+  .checklist__table td { border: none; padding: 4px 0; }
+  .checklist__ck { text-align: left !important; }
+}
+
 /* ---------------- Reflection ---------------- */
 .reflect textarea {
   width: 100%; min-height: 130px; resize: vertical; font-family: var(--font); font-size: 15.5px;
@@ -832,6 +865,35 @@ a:focus-visible, button:focus-visible, .chip:focus-visible {
   body.printing-cert .pager { display: none !important; }
   body.printing-cert .certificate { display: block !important; box-shadow: none; border: none; }
   body.printing-cert { background: #fff; }
+
+  /* Checklist-only print mode (triggered from the "Print checklist" button). The
+     checklist lives inside the active section rather than as a top-level sibling
+     like .certificate, so scope by the section's data-title instead of hiding
+     .layout wholesale. */
+  body.printing-checklist .topbar,
+  body.printing-checklist .toc,
+  body.printing-checklist .toc-backdrop,
+  body.printing-checklist .pager,
+  body.printing-checklist .menu-btn { display: none !important; }
+  /* Drop the sidebar grid track entirely, not just its content, so the
+     checklist gets the full page width instead of only the old "1fr" column. */
+  body.printing-checklist .layout { display: block !important; max-width: none !important; }
+  body.printing-checklist .section { display: none !important; }
+  body.printing-checklist .section[data-title="Evaluating AI Tools"] { display: block !important; }
+  body.printing-checklist .section[data-title="Evaluating AI Tools"] .section__card > * { display: none !important; }
+  body.printing-checklist .section[data-title="Evaluating AI Tools"] #tool-checklist {
+    display: block !important; box-shadow: none; border: none;
+  }
+  body.printing-checklist #tool-checklist .btn-row { display: none !important; }
+  body.printing-checklist .checklist__table { display: table !important; }
+  body.printing-checklist .checklist__table thead,
+  body.printing-checklist .checklist__table tbody,
+  body.printing-checklist .checklist__table tr { display: table-row-group; }
+  body.printing-checklist .checklist__table thead { display: table-header-group; }
+  body.printing-checklist .checklist__table tr { display: table-row; }
+  body.printing-checklist .checklist__table th,
+  body.printing-checklist .checklist__table td { display: table-cell; }
+  body.printing-checklist { background: #fff; }
 }
 @page { margin: 14mm; }
 
