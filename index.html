@@ -529,9 +529,32 @@
             <textarea data-reflect="s4-tool-choice" data-label="Which tool would you recommend, and why? (justify against purpose, value, evidence, privacy, accessibility, equity, sustainability, cost, risk)" placeholder="I'd recommend… because…"></textarea>
           </div>
 
-          <div class="placeholder">
-            <span class="placeholder__flag">Resource needed</span>
-            <p>Downloadable resource: <strong>SETU AI Tool Evaluation Checklist</strong>. [SETU to confirm: the checklist document, once available, replaces this placeholder with a real download link.]</p>
+          <div class="checklist" id="tool-checklist">
+            <div class="checklist__head"><span class="checklist__badge">Checklist</span><strong>SETU AI Tool Evaluation Checklist</strong></div>
+            <div class="checklist__meta">
+              <span>Tool / vendor: <i></i></span>
+              <span>Evaluated by: <i></i></span>
+              <span>Date: <i></i></span>
+            </div>
+            <table class="checklist__table">
+              <thead>
+                <tr><th scope="col" class="checklist__ck"><span class="sr-only">Considered</span></th><th scope="col">Criterion</th><th scope="col">Question</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-purpose" /><label for="chk-purpose"><span class="sr-only">Purpose considered</span></label></td><td>Purpose</td><td>What problem are we trying to solve? Are we beginning with a genuine need, or a technology looking for a use?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-value" /><label for="chk-value"><span class="sr-only">Value considered</span></label></td><td>Value</td><td>Does the tool meaningfully improve the task, experience or outcome?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-evidence" /><label for="chk-evidence"><span class="sr-only">Evidence considered</span></label></td><td>Evidence</td><td>What evidence supports the claims being made? Has the system been independently evaluated?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-privacy" /><label for="chk-privacy"><span class="sr-only">Data &amp; Privacy considered</span></label></td><td>Data &amp; Privacy</td><td>What information does the system collect, process, or store? Where does that information go?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-equity" /><label for="chk-equity"><span class="sr-only">Equity considered</span></label></td><td>Equity</td><td>Who might benefit? Who might be disadvantaged? Could existing inequalities be reinforced?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-accessibility" /><label for="chk-accessibility"><span class="sr-only">Accessibility considered</span></label></td><td>Accessibility</td><td>Can everyone use the system? Does it remove barriers or introduce new ones?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-sustainability" /><label for="chk-sustainability"><span class="sr-only">Sustainability considered</span></label></td><td>Sustainability</td><td>What are the environmental implications? Could the benefit justify the resources — or could the same outcome be achieved more simply?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-integration" /><label for="chk-integration"><span class="sr-only">Integration considered</span></label></td><td>Integration</td><td>How does the tool fit with existing systems and workflows?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-risk" /><label for="chk-risk"><span class="sr-only">Risk considered</span></label></td><td>Risk</td><td>What happens if it fails? What is the consequence of an inaccurate or inappropriate output?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-oversight" /><label for="chk-oversight"><span class="sr-only">Oversight considered</span></label></td><td>Oversight</td><td>Where does meaningful human review occur?</td></tr>
+                <tr><td class="checklist__ck"><input type="checkbox" id="chk-continuity" /><label for="chk-continuity"><span class="sr-only">Continuity considered</span></label></td><td>Continuity</td><td>What happens if the provider disappears, changes its terms, substantially increases its price, or withdraws the service?</td></tr>
+              </tbody>
+            </table>
+            <div class="btn-row"><button class="btn btn--ghost" type="button" id="checklistPrintBtn"><svg class="icon"><use href="#i-download"/></svg> Print checklist</button></div>
           </div>
 
           <div class="callout callout--takeaway">

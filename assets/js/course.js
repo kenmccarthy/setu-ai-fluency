@@ -211,6 +211,21 @@
   });
 
   // ====================================================================
+  // Print checklist (Evaluating AI Tools)
+  // ====================================================================
+  var checklistPrintBtn = document.getElementById("checklistPrintBtn");
+  if (checklistPrintBtn) checklistPrintBtn.addEventListener("click", function () {
+    document.body.classList.add("printing-checklist");
+    var cleanup = function () {
+      document.body.classList.remove("printing-checklist");
+      window.removeEventListener("afterprint", cleanup);
+    };
+    window.addEventListener("afterprint", cleanup);
+    setTimeout(cleanup, 1500);
+    window.print();
+  });
+
+  // ====================================================================
   // Spectrum activity (AI or Human?)
   // ====================================================================
   document.querySelectorAll("[data-spectrum] .srow").forEach(function (row) {
