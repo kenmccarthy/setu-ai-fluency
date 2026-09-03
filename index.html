@@ -8,6 +8,17 @@
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
   <link rel="stylesheet" href="assets/fonts/fonts.css" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- Applied before first paint so a saved theme choice doesn't flash the
+       wrong colours; safe no-op if nothing has been saved yet (falls back
+       to the prefers-color-scheme media query in styles.css). -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("setu-genai-theme");
+        if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <!-- ===================== ICON SPRITE (line icons) ===================== -->
@@ -36,6 +47,8 @@
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
     <symbol id="i-arrow-left" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
   </svg>
 
   <a class="skip-link" href="#main">Skip to content</a>
@@ -60,6 +73,10 @@
         </div>
         <span id="progressPct">0%</span>
       </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" title="Toggle light / dark mode">
+        <svg class="icon theme-toggle__sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="icon theme-toggle__moon" aria-hidden="true" hidden><use href="#i-moon"/></svg>
+      </button>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="toc">☰ Contents</button>
     </div>
   </header>
@@ -67,31 +84,22 @@
   <div class="layout">
     <!-- ===================== TABLE OF CONTENTS ===================== -->
     <div class="toc-backdrop" id="tocBackdrop"></div>
-    <!-- Wrapper needed because .layout is a 2-column CSS grid (260px sidebar / 1fr
-         content) — without it, a second top-level element here flows into the
-         content column instead of stacking under the TOC. The wrapper (not #toc)
-         now owns the sticky positioning, so the TOC and the buttons scroll and pin
-         together as one unit; #toc's own sticky is switched off inline so the two
-         don't fight each other. -->
-    <div class="sidebar-col" style="position:sticky; top:78px;">
-      <nav class="toc" id="toc" aria-label="Course contents" style="position:static;">
-        <h2>Contents</h2>
-        <ol id="tocList"><!-- populated by JS --></ol>
-      </nav>
+    <nav class="toc" id="toc" aria-label="Course contents">
+      <h2>Contents</h2>
+      <ol id="tocList"><!-- populated by JS --></ol>
 
-      <!-- Cross-course navigation. Replace the three href="#" values with each
-           course's real URL once hosting is confirmed. -->
-      <nav class="course-links" aria-label="Other SETU GenAI courses"
-           style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-                  padding:14px;box-shadow:var(--shadow-sm);margin-top:14px;
-                  display:flex;flex-direction:column;gap:8px;">
-        <h2 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;
-                   color:var(--text-mute);margin:4px 6px 6px;">GenAI Programme</h2>
-        <a class="btn" href="https://setu.potential.ly/playlists/ai-literacy" style="background:var(--sea-green);color:#fff;width:100%;justify-content:left;">AI Literacy</a>
-        <a class="btn" href="https://setu.potential.ly/playlists/ai-competency" style="background:var(--clover);color:#fff;width:100%;justify-content:left;">AI Competency</a>
-        <a class="btn" href="https://setu.potential.ly/playlists/ai-fluency" style="background:var(--barrow-blue);color:#fff;width:100%;justify-content:left;">AI Fluency</a>
+      <!-- Cross-course navigation — inside the same box as the contents list,
+           so it's always exactly where the list ends with nothing else to
+           keep in sync (previously a separate sticky element, which drifted
+           out of alignment on scroll). Replace the three href="#" values
+           with each course's real URL once hosting is confirmed. -->
+      <nav class="course-links" aria-label="Other SETU GenAI courses">
+        <h2>GenAI Programme</h2>
+        <a class="btn btn--literacy" href="https://setu.potential.ly/playlists/ai-literacy">AI Literacy</a>
+        <a class="btn btn--competency" href="https://setu.potential.ly/playlists/ai-competency">AI Competency</a>
+        <a class="btn btn--fluency" href="https://setu.potential.ly/playlists/ai-fluency">AI Fluency</a>
       </nav>
-    </div>
+    </nav>
 
     <!-- ===================== CONTENT ===================== -->
     <main class="content" id="main">
@@ -274,8 +282,8 @@
       <!-- ---------- 2. RETHINKING PRACTICE ---------- -->
       <section class="section" data-title="Rethinking Practice" data-nav="Rethinking Practice">
         <div class="section__card">
-          <span class="eyebrow"><span class="dot"></span> Rethinking Practice · Don't automate something just because we've always done it</span>
-          <h1>Don't automate something just because we've always done it</h1>
+          <span class="eyebrow"><span class="dot"></span> Rethinking Practice · Don't automate something just because we can</span>
+          <h1>Don't automate something just because we can</h1>
           <p class="lede">One of the easiest ways to use AI is to make existing processes faster. But fluency asks a more challenging question: should we be doing the same thing faster — or should we be doing something differently?</p>
           <div class="meta-row"><span><svg class="icon"><use href="#i-clock"/></svg> ~7 min</span><span><svg class="icon"><use href="#i-activity"/></svg> Includes an activity</span></div>
           <hr class="rule" />
@@ -285,7 +293,13 @@
             <figcaption>Redesign, not just automation</figcaption>
           </figure>
 
-          <p>Write the email faster. Summarise the report faster. Create the presentation faster. Analyse the feedback faster. Those efficiencies can be valuable.</p>
+          <p>Those efficiencies can be valuable:</p>
+          <ul>
+            <li>Write the email faster.</li>
+            <li>Summarise the report faster.</li>
+            <li>Create the presentation faster.</li>
+            <li>Analyse the feedback faster.</li>
+          </ul>
 
           <p>Consider assessment. If an assessment can now be completed almost entirely by Generative AI, we could spend considerable effort trying to prevent students from using it. Or we could return to the fundamental question: <strong>what learning are we actually trying to assess?</strong></p>
           <p>The same principle applies beyond teaching. If AI can automate part of an administrative process, perhaps the opportunity isn't simply to automate the existing workflow. Perhaps we should reconsider why the process exists, where friction occurs, and where human interaction provides genuine value.</p>
@@ -299,7 +313,6 @@
           <div class="spectrum" id="spectrum-rethink" data-spectrum>
             <div class="activity__head"><span class="activity__badge">Activity</span><strong>Automate, augment, rethink or retain?</strong></div>
             <p style="font-size:15px;margin:6px 0 4px">For each task, what's the right response? Then ask: if this approach were adopted across the university, what would the benefits and costs be — in time, quality, accessibility, workload, environmental resources and human experience?</p>
-            <div class="spectrum__legend"><span>Automate</span><span>Augment</span><span>Rethink</span><span>Keep human-led</span></div>
             <div>
               <div class="srow" data-note="A strong candidate for automation — but check who currently adds judgement while minuting (flagging risks, capturing nuance) before removing the human step entirely.">
                 <div class="srow__task">Producing standard meeting minutes</div>
@@ -334,14 +347,25 @@
             </div>
           </div>
 
-          <h2>Case study: Assessment redesign</h2>
-          <p style="font-size:15px">An academic discovers that students can generate convincing responses to an existing essay using AI. Consider four responses:</p>
-          <div class="callout"><p class="callout__title">A</p><p>Prohibit AI.</p></div>
-          <div class="callout"><p class="callout__title">B</p><p>Introduce AI detection.</p></div>
-          <div class="callout"><p class="callout__title">C</p><p>Retain the essay but require students to disclose AI use.</p></div>
-          <div class="callout"><p class="callout__title">D</p><p>Revisit the learning outcomes and redesign the assessment.</p></div>
+          <div class="activity" data-activity="assessment-redesign">
+            <div class="activity__head"><span class="activity__badge">Case study</span><strong>Assessment redesign</strong></div>
+            <p style="font-size:15px">An academic discovers that students can generate convincing responses to an existing essay using AI. Four responses are on the table:</p>
+            <div class="grid grid--2">
+              <div class="tile"><h3>A</h3><p>Prohibit AI.</p></div>
+              <div class="tile"><h3>B</h3><p>Introduce AI detection.</p></div>
+              <div class="tile"><h3>C</h3><p>Retain the essay but require students to disclose AI use.</p></div>
+              <div class="tile"><h3>D</h3><p>Revisit the learning outcomes and redesign the assessment.</p></div>
+            </div>
+            <p style="font-size:15px;font-weight:600">Which response addresses the underlying issue — and what would each of the others cost you?</p>
+            <div class="btn-row"><button class="btn btn--ghost" data-reveal-simple="assessment-redesign-reveal">Reveal the discussion</button></div>
+            <div class="callout" id="assessment-redesign-reveal" hidden>
+              <p><strong>A</strong> and <strong>B</strong> treat the symptom — a new tool will beat detection again next term.</p>
+              <p><strong>C</strong> manages disclosure, but a student can still comply without the essay measuring what it once did.</p>
+              <p><strong>D</strong> is the only option that asks what the assessment was actually for, and redesigns it to still test that.</p>
+            </div>
+          </div>
           <div class="reflect">
-            <textarea data-reflect="s2-consequences" data-label="What are the potential consequences of each approach (A–D)?" placeholder="A: …&#10;B: …&#10;C: …&#10;D: …"></textarea>
+            <textarea data-reflect="s2-choice" data-label="Which response would you choose, and why? What would you need to change to make it work?" placeholder="I'd choose… because… To make it work, I'd need to…"></textarea>
           </div>
           <div class="callout callout--info">
             <p class="callout__title">Read more</p>
@@ -389,7 +413,6 @@
           <div class="spectrum" id="spectrum-continuum" data-spectrum>
             <div class="activity__head"><span class="activity__badge">Activity</span><strong>The Human–AI Continuum</strong></div>
             <p style="font-size:15px;margin:6px 0 4px">For each activity, where should it sit? Think about consequence, ambiguity, empathy, ethics, contextual knowledge, relationships, and accountability.</p>
-            <div class="spectrum__legend"><span>Human-led</span><span>Human + AI</span><span>AI-led, human oversight</span></div>
             <div>
               <div class="srow" data-note="Low-stakes and generative — a natural place for AI + human collaboration.">
                 <div class="srow__task">Brainstorming</div>
@@ -486,7 +509,7 @@
             <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-briefcase"/></svg></div><h3>Integration</h3><p>How does the tool fit with existing systems and workflows?</p></div>
             <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-alert-triangle"/></svg></div><h3>Risk</h3><p>What happens if it fails? What is the consequence of an inaccurate or inappropriate output?</p></div>
             <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-shield"/></svg></div><h3>Oversight</h3><p>Where does meaningful human review occur?</p></div>
-            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-alert-circle"/></svg></div><h3>Exit</h3><p>What happens if the provider disappears, changes its terms, substantially increases its price, or withdraws the service?</p></div>
+            <div class="tile"><div class="tile__icon"><svg class="icon"><use href="#i-alert-circle"/></svg></div><h3>Continuity</h3><p>What happens if the provider disappears, changes its terms, substantially increases its price, or withdraws the service?</p></div>
           </div>
 
           <p>AI relies on physical infrastructure that consumes energy and resources. Depending on the technology and location, water use, hardware requirements, and data storage may also be relevant. A small individual impact can become a much larger institutional consideration when multiplied across thousands of users and repeated activities — so sustainability should form part of technology evaluation from the beginning, not be considered after adoption.</p>
@@ -552,7 +575,6 @@
           <div class="spectrum" id="spectrum-autonomy" data-spectrum>
             <div class="activity__head"><span class="activity__badge">Activity</span><strong>How much autonomy?</strong></div>
             <p style="font-size:15px;margin:6px 0 4px">For each task, at what point would you require human approval? Does your answer change according to consequence?</p>
-            <div class="spectrum__legend"><span>Suggest</span><span>Prepare</span><span>Act &amp; report</span><span>Act autonomously</span></div>
             <div>
               <div class="srow" data-note="Low consequence and easily reversed — a reasonable candidate for the AI to act and simply report back.">
                 <div class="srow__task">Scheduling meetings</div>
